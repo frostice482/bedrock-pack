@@ -10,7 +10,7 @@ import BedrockManifestJson from "../lib/manifest_json.js";
 import BedrockPack from '../lib/pack.js';
 import BedrockManifestResolver from '../lib/resolver/index.js';
 
-const includes: Record<BedrockManifestJson.ModuleTypes, string[]> = {
+const moduleIncludes: Record<BedrockManifestJson.ModuleTypes, string[]> = {
     data: [
         "animations/**/*.json",
         "animation_controllers/**/*.json",
@@ -43,6 +43,20 @@ const includes: Record<BedrockManifestJson.ModuleTypes, string[]> = {
         "ui/**/*.json"
     ],
     script: [
+        "animations/**/*.json",
+        "animation_controllers/**/*.json",
+        "blocks/**/*.json",
+        "entities/**/*.json",
+        "features/**/*.json",
+        "feature_rules/**/*.json",
+        "functions/**/*.mcfunction",
+        "items/**/*.json",
+        "loot_tables/**/*.json",
+        "recipes/**/*.json",
+        "spawn_rules/**/*.json",
+        "structures/**/*.mcstructure",
+        "trading/**/*.json",
+
         "scripts/**/*.js"
     ],
     skin_pack: [
@@ -102,12 +116,14 @@ export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPac
         )
 
         // include
-        const incl = commonIncludes.slice()
-        for (const mod of pack.manifest.modules.keys()) incl.push.apply(incl, includes[mod])
+        const incl = new Set(commonIncludes)
+        for (const moduleType of pack.manifest.modules.keys())
+            for (const pattern of moduleIncludes[moduleType])
+                incl.add(pattern)
 
         // glob
         const dir = path.parse(pack.path).dir || '.'
-        const glob = new Glob(incl, {
+        const glob = new Glob(Array.from(incl), {
             cwd: dir,
             nodir: true
         })
