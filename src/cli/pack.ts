@@ -69,6 +69,7 @@ const commonIncludes = [
     "manifest.json",
     "pack_icon.png",
     "texts/**/*.lang",
+    "subpacks/**/*",
 
     'README*',
     'LICENSE*',
