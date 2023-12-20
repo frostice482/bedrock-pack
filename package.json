@@ -18,7 +18,7 @@
     "url": "https://github.com/frostice482/bedrock-pack"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
+    "@types/node": "^16.7.0",
     "@types/prompts": "^2.4.9",
     "@types/semver": "^7.5.6",
     "@types/yauzl-promise": "^2.1.4",
@@ -36,7 +36,7 @@
     "yazl": "^2.5.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.7.0"
   },
   "files": [
     "dist/"
