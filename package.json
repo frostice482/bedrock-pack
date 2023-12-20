@@ -11,8 +11,12 @@
     "bedrock-pack",
     "bedrock-manifest"
   ],
-  "author": "frostice481",
+  "author": "frostice482",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frostice482/bedrock-pack"
+  },
   "devDependencies": {
     "@types/node": "^20.10.4",
     "@types/prompts": "^2.4.9",
