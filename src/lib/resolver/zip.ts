@@ -18,7 +18,7 @@ export default async function resolveZipManifest(path: string, opts?: ManifestRe
             if (!/(pack_)?manifest\.json$/.test(filename)) continue
 
             // immediately adds the manifest entry and break the loop if stopAfterFound is true
-            if (!stopAfterFound) {
+            if (stopAfterFound) {
                 manifestEntries.push(entry)
                 break entryloop
             }
