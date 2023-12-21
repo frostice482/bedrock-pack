@@ -12,14 +12,15 @@ export default async function resolveZipManifest(path: string, opts?: ManifestRe
         let lowestEntryLevel = Infinity
         let manifestEntries: yauzl.Entry[] = []
 
+        entryloop:
         for await (const entry of zip) {
             const { filename } = entry
-            if (/(pack_)?manifest\.json$/.test(filename)) continue
+            if (!/^(pack_)?manifest\.json$/.test(filename)) continue
 
             // immediately adds the manifest entry and break the loop if stopAfterFound is true
             if (!stopAfterFound) {
                 manifestEntries.push(entry)
-                break
+                break entryloop
             }
 
             // compare entry level
