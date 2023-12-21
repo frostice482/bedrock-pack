@@ -1,11 +1,7 @@
-import _dir from './dir.js'
-import _root from './root.js'
-import _zip from './zip.js'
-
 export namespace BedrockManifestResolver {
-    export const dir = _dir
-    export const root = _root
-    export const zip = _zip
+    export const dir: typeof import('./dir.js').default = (...args) => { return require('./dir.js').default.apply(undefined, args) }
+    export const root: typeof import('./root.js').default = (...args) => { return require('./root.js').default.apply(undefined, args) }
+    export const zip: typeof import('./zip.js').default = (...args) => { return require('./zip.js').default.apply(undefined, args) }
 }
 
 export default BedrockManifestResolver
