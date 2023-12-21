@@ -27,8 +27,8 @@ export class BedrockPack {
                 await fsp.cp(this.dir, path, { recursive: true })
                 break
 
-            case 'link': 
-                await fsp.link(this.dir, path)
+            case 'symlink': 
+                await fsp.symlink(this.dir, path)
                 break
         }
 
@@ -38,4 +38,4 @@ export class BedrockPack {
 
 export default BedrockPack
 
-type CopyType = 'copy' | 'link' | 'none'
+type CopyType = 'copy' | 'symlink' | 'none'
