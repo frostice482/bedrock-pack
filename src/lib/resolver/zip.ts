@@ -15,7 +15,7 @@ export default async function resolveZipManifest(path: string, opts?: ManifestRe
         entryloop:
         for await (const entry of zip) {
             const { filename } = entry
-            if (!/^(pack_)?manifest\.json$/.test(filename)) continue
+            if (!/(pack_)?manifest\.json$/.test(filename)) continue
 
             // immediately adds the manifest entry and break the loop if stopAfterFound is true
             if (!stopAfterFound) {
