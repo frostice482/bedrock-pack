@@ -123,7 +123,7 @@ export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPac
                 incl.add(pattern)
 
         // glob
-        const dir = path.parse(pack.path).dir || '.'
+        const dir = path.dirname(pack.path)
         const glob = new Glob(Array.from(incl), {
             cwd: dir,
             nodir: true
