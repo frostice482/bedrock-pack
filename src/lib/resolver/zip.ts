@@ -47,7 +47,7 @@ export default async function resolveZipManifest(path: string, opts?: ManifestRe
         const buf = Buffer.concat(chk)
 
         const strip = await import('strip-json-comments')
-        return new BedrockPack(path + '//' + entry.filename, JSON.parse(strip.default(buf.toString())))
+        return new BedrockPack(path, JSON.parse(strip.default(buf.toString())))
     } finally {
         await zip.close()
     }
