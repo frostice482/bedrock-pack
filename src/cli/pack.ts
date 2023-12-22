@@ -78,6 +78,11 @@ const commonIncludes = [
 ]
 
 export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPackOptions> = {}) {
+    const {
+        path: outPath = '.',
+        logFile = true
+    } = opts
+
     let packs: Set<BedrockPack>
 
     // manifest resolving
@@ -86,7 +91,7 @@ export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPac
         const pack = await BedrockPack.fromFile('manifest.json')
         packs = new Set([pack])
     } else {
-        packs = await BedrockManifestResolver.root(opts.path ?? '.', { zip: { ignore: true } })
+        packs = await BedrockManifestResolver.root(outPath ?? '.', { zip: { ignore: true } })
     }
 
     // detect if pack count = 0
@@ -130,7 +135,7 @@ export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPac
         })
 
         for await (const entry of glob) {
-            if (opts.logFile !== false) console.log('  - ' + entry)
+            if (logFile) console.log('  - ' + entry)
             zip.addFile(dir + '/' + entry, rel + entry)
         }
     }

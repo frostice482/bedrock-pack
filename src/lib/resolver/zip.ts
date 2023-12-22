@@ -7,6 +7,7 @@ export default async function resolveZipManifest(path: string, opts?: ManifestRe
         stopAfterFound = false,
         validate = true
     } = opts ?? {}
+    
     const zip = await yauzl.open(path)
     try {
         let lowestEntryLevel = Infinity
