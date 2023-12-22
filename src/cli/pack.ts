@@ -77,11 +77,8 @@ const commonIncludes = [
     '*.txt',
 ]
 
-export default async function cliPack(out: string, opts: tse.DeepReadonly<CLIPackOptions> = {}) {
-    const {
-        path: outPath = '.',
-        logFile = true
-    } = opts
+export default async function cliPack(out: string, opts?: tse.DeepReadonly<CLIPackOptions> | null) {
+    const { path: outPath = '.', logFile = true } = opts ?? {}
 
     let packs: Set<BedrockPack>
 

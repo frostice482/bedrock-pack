@@ -4,7 +4,7 @@ import resolveZipManifest from './zip.js';
 import resolveDirManifest from './dir.js';
 import { BedrockPack } from '../pack.js'
 
-export default async function resolveRootManifests(path: string, opts?: RootManifestResolveOptions) {
+export default async function resolveRootManifests(path: string, opts?: RootManifestResolveOptions | null) {
     const manifestList = new Set<BedrockPack>()
 
     const { zip: zipOpts = {}, dir: dirOpts = {} } = opts ?? {}

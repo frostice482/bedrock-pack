@@ -1,12 +1,10 @@
 import yauzl = require('yauzl-promise')
+import * as tse from 'ts-essentials'
 import { ManifestResolveOptions } from './'
 import { BedrockPack } from '../pack.js'
 
-export default async function resolveZipManifest(path: string, opts?: ManifestResolveOptions) {
-    const {
-        stopAfterFound = false,
-        validate = true
-    } = opts ?? {}
+export default async function resolveZipManifest(path: string, opts?: tse.DeepReadonly<ManifestResolveOptions> | null) {
+    const { stopAfterFound = false, validate = true } = opts ?? {}
     
     const zip = await yauzl.open(path)
     try {

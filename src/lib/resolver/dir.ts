@@ -1,4 +1,5 @@
 import fsp = require('fs/promises')
+import * as tse from 'ts-essentials'
 import { ManifestResolveOptions } from './'
 import { BedrockPack } from '../pack.js'
 
@@ -7,11 +8,8 @@ const manifestFiles = [
     'pack_manifest.json',
 ]
 
-export default async function resolveDirManifest(path: string, opts?: ManifestResolveOptions) {
-    const {
-        stopAfterFound = false,
-        validate = true
-    } = opts ?? {}
+export default async function resolveDirManifest(path: string, opts?: tse.DeepReadonly<ManifestResolveOptions> | null) {
+    const { stopAfterFound = false, validate = true } = opts ?? {}
 
     let localDirs = ['.']
     let manifestEntries: string[] = []
