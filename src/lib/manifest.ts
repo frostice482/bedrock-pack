@@ -122,6 +122,14 @@ export class ManifestDependencies extends Map<string, Manifest.Dependency> {
         return this.set('uuid' in dependency ? dependency.uuid : dependency.module_name, dependency)
     }
 
+    *modules() {
+        for (const dep of this.values()) if ('module_name' in dep) yield dep
+    }
+
+    *uuids() {
+        for (const dep of this.values()) if ('uuid' in dep) yield dep
+    }
+
     toJSON() {
         return Array.from(this.values())
     }
