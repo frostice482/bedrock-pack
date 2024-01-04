@@ -9,6 +9,7 @@ import { Glob } from "glob";
 import BedrockManifestJson from "../lib/manifest_json.js";
 import BedrockPack from '../lib/pack.js';
 import BedrockManifestResolver from '../lib/resolver/index.js';
+import { versionStr } from '../index.js'
 
 const moduleIncludes: Record<BedrockManifestJson.ModuleTypes, string[]> = {
     data: [
@@ -114,7 +115,7 @@ export default async function cliPack(out: string, opts?: tse.DeepReadonly<CLIPa
         console.log(
             pack.name.replace(/\xa7./g, ''),
             chalk.gray(pack.uuid),
-            chalk.green(typeof pack.version === 'string' ? pack.version : pack.version.join('.')),
+            chalk.green(versionStr(pack.version)),
             rel ? chalk.blue(rel) : '',
         )
 

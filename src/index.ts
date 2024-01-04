@@ -1,5 +1,6 @@
 export * from './lib/manifest.js'
 export * from './lib/pack.js'
+export * from './lib/misc.js'
 export * from './lib/resolver/index.js'
 export * from './cli/index.js'
 export type * from './lib/manifest_json.js'
