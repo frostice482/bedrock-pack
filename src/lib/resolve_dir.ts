@@ -1,7 +1,6 @@
 import fsp = require('fs/promises')
 import * as tse from 'ts-essentials'
-import { ManifestResolveOptions } from './'
-import { BedrockPack } from '../pack.js'
+import { BedrockPack } from './pack.js'
 
 const manifestFiles = [
     'manifest.json',
@@ -53,4 +52,17 @@ export default async function resolveDirManifest(path: string, opts?: tse.DeepRe
     
     const manifestPath = entry
     return BedrockPack.fromFile(manifestPath)
+}
+
+export interface ManifestResolveOptions {
+    /**
+     * Returns the first manifest found, ignoring validation and other manifest that may exist
+     */
+    stopAfterFound?: boolean
+
+    /**
+     * Validates multiple `manifest.json` exists in the same folder level
+     * Ignored if `stopAfterFound` is `true`
+     */
+    validate?: boolean
 }
