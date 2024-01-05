@@ -1,7 +1,7 @@
 {
   "name": "bedrock-pack",
   "version": "1.0.0",
-  "description": "CLI Utils for Minecraft Bedrock Pack",
+  "description": "Utils for Minecraft Bedrock Packs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": "dist/cli-program.js",
