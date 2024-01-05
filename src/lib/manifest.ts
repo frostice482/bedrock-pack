@@ -1,6 +1,6 @@
 import crypto = require('crypto')
 import fsp = require('fs/promises')
-import Manifest from './manifest_json.js'
+import Manifest from './types/manifest_json.js'
 
 export class BedrockManifest {
     static async fromFile(path: string) {

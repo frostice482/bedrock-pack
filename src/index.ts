@@ -1,5 +1,5 @@
 export * from './lib/manifest.js'
 export * from './lib/pack.js'
 export * from './lib/resolver/index.js'
-export type * from './lib/manifest_json.js'
-export type * from './lib/skinpack_json.js'
+export type * from './lib/types/manifest_json.js'
+export type * from './lib/types/skinpack_json.js'

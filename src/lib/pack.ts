@@ -1,7 +1,7 @@
 import fsp = require('fs/promises')
 import path = require('path')
 import BedrockManifest from "./manifest.js"
-import BedrockManifestJson from "./manifest_json.js"
+import BedrockManifestJson from "./types/manifest_json.js"
 
 export class BedrockPack {
     static async fromFile(filePath: string) {
