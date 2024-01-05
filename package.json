@@ -4,7 +4,6 @@
   "description": "Utils for Minecraft Bedrock Packs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": "dist/cli-program.js",
   "scripts": {},
   "keywords": [
     "bedrock",
